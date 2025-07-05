@@ -1,4 +1,4 @@
-module leave(x, y, rotate) {
+module leaf(x, y, rotate) {
   translate([x, y, 0])
     rotate([0, 0, rotate])
       linear_extrude(height = 4)
@@ -14,11 +14,12 @@ module plant_pot_support(outer_diameter, width, thickness) {
     // Inner ring
     cylinder(h = thickness, r = outer_diameter / 2 - width);
     
-    leave_count = 13;
-    leave_radius = outer_diameter / 2 - width / 2 - 2;
-    for (i = [0 : leave_count - 1]) {
-      angle = 360 / leave_count * i;
-      leave(x = cos(angle) * leave_radius, y = sin(angle) * leave_radius, rotate = angle + 15);
+    // Leaves
+    leaf_count = 13;
+    leaf_radius = outer_diameter / 2 - width / 2 - 2;
+    for (i = [0 : leaf_count - 1]) {
+      angle = 360 / leaf_count * i;
+      leaf(x = cos(angle) * leaf_radius, y = sin(angle) * leaf_radius, rotate = angle + 15);
     }
   };
 }
